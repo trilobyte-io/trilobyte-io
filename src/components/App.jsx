@@ -56,15 +56,6 @@ const App = () => {
           </a>
         </sub>
       </div>
-      <div className="mt-10 flex flex-col flex-wrap items-center">
-        <h1 className=" mb-4 font-semibold sm:text-2xl">Creation Awaits...</h1>
-        <p className="text-sm sm:text-base">
-          Click on above images for more information about the individual tools.
-        </p>
-        <p className="text-sm sm:text-base">
-          If you encounter any bugs or errors please file an issue on GitHub.
-        </p>
-      </div>
     </>
   );
 };
