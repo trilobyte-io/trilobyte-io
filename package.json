@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Provides all the necessary setup files for a React and Vite application. Includes un-opinionated ESLint configuration that supports React Hooks and Prettier",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "server": "nodemon ./src/server/index.js",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -30,6 +32,9 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
