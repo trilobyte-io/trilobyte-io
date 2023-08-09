@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build ./src",
     "preview": "vite preview",
     "server": "nodemon ./src/server/index.js",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
