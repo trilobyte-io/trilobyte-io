@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build ./src",
     "preview": "vite preview",
-    "server": "nodemon ./src/server/index.js",
+    "server": "nodemon ./server/index.js",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
     "format": "prettier --write \"src/**/*.{js,jsx}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
