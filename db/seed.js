@@ -31,7 +31,7 @@ pool.getConnection((err, connection) => {
   connection.query(statements[0], (err, result) => {
     if (err) {
       console.error("First query error:", err);
-      return;
+      return result;
     }
 
     connection.query(statements[1], (err, result) => {
@@ -40,16 +40,23 @@ pool.getConnection((err, connection) => {
         return;
       }
 
-      console.log("Created tables in database");
+      connection.query(statements[2], (err, result) => {
+        if (err) {
+          console.error("Third query error:", err);
+          return;
+        }
 
-      // Release the connection back to the pool
-      connection.release();
+        console.log("Created tables in database");
 
-      console.log(
-        `Connected to '${connection.config.database}' on port ${connection.config.port}`
-      );
+        // Release the connection back to the pool
+        connection.release();
+
+        console.log(
+          `Connected to '${connection.config.database}' on port ${connection.config.port}`
+        );
+        return result;
+      });
       return result;
     });
-    return result;
   });
 });
