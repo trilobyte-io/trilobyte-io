@@ -8,3 +8,9 @@ CREATE TABLE tempHum (
   temperature INT,
   humidity INT
 );
+
+CREATE TABLE user (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  age INT
+);
