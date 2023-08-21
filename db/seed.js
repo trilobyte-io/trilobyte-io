@@ -13,7 +13,6 @@ pool.getConnection((err, connection) => {
   const statements = createTables
     .split(";")
     .filter((statement) => statement.trim() !== "");
-  console.log("LENGTH", statements.length);
 
   for (let i = 0; i < statements.length; i++) {
     connection.query(statements[i], (err, result) => {
