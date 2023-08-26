@@ -3,6 +3,7 @@ import path from "path";
 import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
+import getTempHumidity from "./controllers/getTempHumidity.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,6 +20,8 @@ app.use(cors());
 app.get("/*", (_req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
 });
+
+app.get("/tempHumidity", getTempHumidity);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
