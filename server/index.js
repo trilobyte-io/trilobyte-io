@@ -17,11 +17,12 @@ app.use(express.json());
 app.use("/", express.static("src/dist"));
 app.use(cors());
 
+app.get("/tempHumidity", getTempHumidity);
+
 app.get("/*", (_req, res) => {
-  res.sendFile(path.join(__dirname, "../dist/index.html"));
+  res.sendFile(path.join(__dirname, "../src/dist/index.html"));
 });
 
-app.get("/tempHumidity", getTempHumidity);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
