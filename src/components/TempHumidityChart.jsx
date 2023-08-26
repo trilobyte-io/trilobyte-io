@@ -1,53 +1,40 @@
-// import "chart.js";
-
-// const TempHumidityChart = ({ data }) => {
-
-//   const cfg = {
-//     type: 'line',
-//     data: {
-//       datasets: [{
-//         data: [{x: '2016-12-25', y: 20}, {x: '2016-12-26', y: 10}]
-//       }]
-//     }
-//   }
-
-// console.log(data)
-//   return (
-//   <div>
-//     {data.map(el => el.humidity)}
-//   </div>
-//   )
-// }
-
-// export default TempHumidityChart;
-
 import React, { useEffect, useRef } from 'react';
-import {Chart} from 'chart.js';
+import { Chart as ChartJS, registerables } from 'chart.js';
+import { Line } from 'react-chartjs-2'
+ChartJS.register(...registerables);
 
-function TempHumidityChart({ data }) {
-  const chartRef = useRef();
 
-  useEffect(() => {
-    const myChartRef = chartRef.current.getContext('2d');
-
-    new Chart(myChartRef, {
-      type: 'line',
-      data: {
-        labels: data.map(entry => entry.label),
-        datasets: [{
-          label: 'My Line Graph',
-          data: data.map(entry => entry.value),
-          borderColor: 'rgba(75, 192, 192, 1)',
-          fill: false,
-        }],
+const TempHumidityChart = ({ data }) => {
+  console.log("DATA IN CHART COMPONENT: ",
+  data)
+    const chartData = {
+      labels: data.map(entry => entry.id),
+      datasets: [{
+        label: 'Humidity',
+        data: data.map(entry => entry.humidity),
+        borderColor: 'green',
+        fill: false,
       },
-      options: {
-        // Customize options as needed
-      }
-    });
-  }, [data]);
+      {
+        label: 'Temperature',
+        data: data.map(entry => entry.temperature),
+        borderColor: 'red',
+        fill: false,
+      }],
+    };
 
-  return <canvas ref={chartRef} />;
+    const options = {
+
+        scales: {
+          yAxis: {
+            min: 0,
+            max: 100,
+          }
+        }
+    };
+
+
+  return <Line data={chartData} options={options}  />;
 }
 
 export default TempHumidityChart;
