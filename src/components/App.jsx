@@ -12,7 +12,6 @@ const App = () => {
       setTempHumidity(res.data)
     })
     .catch((err) => console.log("Error retrieving temperate and humidity data", err))
-
   }
 
   useEffect(getTempHumidity, []);

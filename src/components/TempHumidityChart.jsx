@@ -32,7 +32,6 @@ const TempHumidityChart = ({ data }) => {
         }
     };
 
-
   return <Line data={chartData} options={options}  />;
 }
 
