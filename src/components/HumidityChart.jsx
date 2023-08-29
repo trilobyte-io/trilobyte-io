@@ -8,7 +8,7 @@ const HumidityChart = ({ data }) => {
   console.log("DATA IN CHART COMPONENT: ",
   data)
     const chartData = {
-      labels: data.map(entry => entry.id),
+      labels: data.map(entry => entry.time.slice(5, 10)),
       datasets: [{
         label: 'Humidity',
         data: data.map(entry => entry.humidity),
@@ -18,12 +18,23 @@ const HumidityChart = ({ data }) => {
     };
 
     const options = {
-        scales: {
-          yAxis: {
+      scales: {
+        y:
+          {
             min: 0,
             max: 100,
-          }
-        }
+            stepSize: 20,
+          },
+        x:
+          {
+            ticks: {
+              callback: function(val, index) {
+                // Hide every 2nd tick label
+                return index % 2 === 0 ? this.getLabelForValue(val) : '';
+              },
+            }
+          },
+      },
     };
 
   return <Line data={chartData} options={options}  />;
