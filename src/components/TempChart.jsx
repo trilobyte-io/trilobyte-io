@@ -8,7 +8,7 @@ const TempChart = ({ data }) => {
   console.log("DATA IN CHART COMPONENT: ",
   data)
     const chartData = {
-      labels: data.map(entry => entry.id),
+      labels: data.map(entry => entry.time.slice(5, 10)),
       datasets: [
       {
         label: 'Temperature',
@@ -20,10 +20,28 @@ const TempChart = ({ data }) => {
 
     const options = {
         scales: {
-          yAxis: {
+          y:
+          {
             min: 0,
             max: 100,
-          }
+
+            ticks: {
+              stepSize: 10,
+              callback: function(val) {
+                // Hide every 2nd tick label
+                return val + "°F"
+              },
+            }
+          },
+          x:
+          {
+            ticks: {
+              callback: function(val, index) {
+                // Hide every 2nd tick label
+                return index % 2 === 0 ? this.getLabelForValue(val) : '';
+              },
+            }
+          },
         }
     };
 

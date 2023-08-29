@@ -6,6 +6,25 @@ import HumidityChart from "./HumidityChart.jsx";
 const App = () => {
   const [tempHumidity, setTempHumidity] = useState([])
 
+  // BELOW IS THE LOGIC FOR ADDING NEW DATA POINTS TO BOTH TEMP AND HUMIDITY CHARTS IN REAL TIMEs
+
+  // let newData = {
+  //   temperature: Math.floor(Math.random() * 100) + 1,
+  //   humidity: Math.floor(Math.random() * 100) + 1,
+  //   time: new Date("2015-03-25")
+  // }
+
+  // let addData = (data) => {
+  //   setTimeout(() => {
+  //     let updatedData = [data, ...tempHumidity]
+  //     setTempHumidity(updatedData)
+  //   }, 5000)
+  // }
+
+  // addData(newData)
+
+
+
   const getTempHumidity = () => {
     axios.get("http://localhost:3000/tempHumidity")
     .then((res) => {
@@ -19,7 +38,7 @@ const App = () => {
 console.log("SHOULD BE MY DATA", tempHumidity)
   return (
     <>
-      <div>Should Render!!</div>
+
       <TempChart data={tempHumidity} />
       <HumidityChart data={tempHumidity} />
     </>

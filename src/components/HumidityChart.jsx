@@ -23,7 +23,13 @@ const HumidityChart = ({ data }) => {
           {
             min: 0,
             max: 100,
-            stepSize: 20,
+
+            ticks: {
+              stepSize: 10,
+              callback: function(val) {
+                return val + "%"
+              },
+            }
           },
         x:
           {
