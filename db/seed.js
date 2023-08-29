@@ -15,7 +15,6 @@ pool.getConnection((err, connection) => {
     .split(";")
     .filter((statement) => statement.trim() !== "");
 
-
   for (let i = 0; i < statements.length; i++) {
     connection.query(statements[i], (err, result) => {
       if (err) {

@@ -4,17 +4,12 @@ import { Line } from 'react-chartjs-2'
 ChartJS.register(...registerables);
 
 
-const TempHumidityChart = ({ data }) => {
+const TempChart = ({ data }) => {
   console.log("DATA IN CHART COMPONENT: ",
   data)
     const chartData = {
       labels: data.map(entry => entry.id),
-      datasets: [{
-        label: 'Humidity',
-        data: data.map(entry => entry.humidity),
-        borderColor: 'green',
-        fill: false,
-      },
+      datasets: [
       {
         label: 'Temperature',
         data: data.map(entry => entry.temperature),
@@ -35,4 +30,4 @@ const TempHumidityChart = ({ data }) => {
   return <Line data={chartData} options={options}  />;
 }
 
-export default TempHumidityChart;
+export default TempChart;

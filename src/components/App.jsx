@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TempHumidityChart from "./TempHumidityChart";
+import TempChart from "./TempChart.jsx";
+import HumidityChart from "./HumidityChart.jsx";
 
 const App = () => {
   const [tempHumidity, setTempHumidity] = useState([])
@@ -19,7 +20,8 @@ console.log("SHOULD BE MY DATA", tempHumidity)
   return (
     <>
       <div>Should Render!!</div>
-      <TempHumidityChart data={tempHumidity} />
+      <TempChart data={tempHumidity} />
+      <HumidityChart data={tempHumidity} />
     </>
   );
 };
