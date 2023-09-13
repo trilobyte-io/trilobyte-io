@@ -1,4 +1,4 @@
-import mysql from "mysql";
+import mysql from "mysql2";
 import { config } from "dotenv";
 
 config(); // Load environment variables from .env
