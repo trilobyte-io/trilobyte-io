@@ -20,6 +20,7 @@ app.use(cors());
 app.get("/tempHumidity", getTempHumidity);
 
 app.get("/*", (_req, res) => {
+  console.log("PINGED? IN SERVER INDEX")
   res.sendFile(path.join(__dirname, "../src/dist/index.html"));
 });
 
