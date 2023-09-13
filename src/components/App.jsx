@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TempChart from "./TempChart.jsx";
 import HumidityChart from "./HumidityChart.jsx";
+import postData from "../../server/controllers/postData.js";
+
 
 const App = () => {
   const [tempHumidity, setTempHumidity] = useState([])
@@ -30,9 +32,16 @@ const App = () => {
     .then((res) => {
       console.log("RESPONSE FROM AXIOS", res)
       setTempHumidity(res.data)
+
     })
     .catch((err) => console.log("Error retrieving temperate and humidity data", err))
+    .then((data) => {
+      postData();
+    })
+
   }
+
+
 
   useEffect(getTempHumidity, []);
 console.log("SHOULD BE MY DATA", tempHumidity)
