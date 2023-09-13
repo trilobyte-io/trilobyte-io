@@ -11,6 +11,7 @@ import pool from "../../db/connect.js"
 
 const getTempHumidity = (request, response) => {
   let query = `SELECT * FROM TempHum;`;
+  console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION")
 
   pool.query(query, (error, results) => {
     if (error) {
