@@ -38,7 +38,6 @@ const App = () => {
 console.log("SHOULD BE MY DATA", tempHumidity)
   return (
     <>
-
       <TempChart data={tempHumidity} />
       <HumidityChart data={tempHumidity} />
     </>
