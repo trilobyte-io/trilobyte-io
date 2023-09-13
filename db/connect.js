@@ -9,6 +9,9 @@ const pool = mysql.createPool({
   database: process.env.database,
   password: process.env.password,
   port: process.env.port,
+  extra: {
+    flags: 'LOCAL_FILES'
+  }
 });
 
 export default pool;
