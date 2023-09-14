@@ -17,7 +17,7 @@ const postSensorData = (request, response) => {
 
 
   let query = `INSERT INTO tempHum (time, temperature, humidity, lux)
-               VALUES (${mysqlDateTime}, ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
+               VALUES ('${mysqlDateTime}', ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
   console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION");
 
   pool.query(query, (error, results) => {
