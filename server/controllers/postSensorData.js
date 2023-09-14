@@ -11,8 +11,13 @@ import pool from "../../db/connect.js"
 
 const postSensorData = (request, response) => {
   let data = request.body;
+  const currentDate = new Date();
+
+  const mysqlDateTime = currentDate.toISOString().slice(0, 19).replace('T', ' ');
+
+
   let query = `INSERT INTO tempHum (time, temperature, humidity, lux)
-               VALUES (${new Date()}, ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
+               VALUES (${mysqlDateTime}, ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
   console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION");
 
   pool.query(query, (error, results) => {
