@@ -35,10 +35,6 @@ const App = () => {
 
     })
     .catch((err) => console.log("Error retrieving temperate and humidity data", err))
-    .then((data) => {
-      postData();
-    })
-
   }
 
 
