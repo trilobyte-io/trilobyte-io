@@ -47,8 +47,10 @@ const App = () => {
 console.log("SHOULD BE MY DATA", tempHumidity)
   return (
     <>
-      <TempChart data={tempHumidity} />
-      <HumidityChart data={tempHumidity} />
+      <div className="bg-gray">
+        <TempChart data={tempHumidity} />
+        <HumidityChart data={tempHumidity} />
+      </div>
     </>
   );
 };
