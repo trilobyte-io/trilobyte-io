@@ -14,7 +14,7 @@ export default function ClosePlugin() {
       },
 
       // use this to catch the end of a build without errors
-      closeBundle(id) {
+      closeBundle() {
           console.log('Bundle closed')
           process.exit(0)
       },

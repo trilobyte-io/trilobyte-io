@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TempChart from "./TempChart.jsx";
 import HumidityChart from "./HumidityChart.jsx";
-import postData from "../../server/controllers/postData.js";
 
 
 const App = () => {
@@ -32,7 +31,6 @@ const App = () => {
     .then((res) => {
       console.log("RESPONSE FROM AXIOS", res)
       setTempHumidity(res.data)
-
     })
     .catch((err) => console.log("Error retrieving temperate and humidity data", err))
   }
@@ -43,7 +41,7 @@ const App = () => {
 console.log("SHOULD BE MY DATA", tempHumidity)
   return (
     <>
-      <div className="bg-blue-500 text-white p-4">
+      <div className="bg-white-100">
         <TempChart data={tempHumidity} />
         <HumidityChart data={tempHumidity} />
       </div>

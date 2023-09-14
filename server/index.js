@@ -4,7 +4,6 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import getTempHumidity from "./controllers/getTempHumidity.js";
-import postData from "./controllers/postData.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -19,8 +18,6 @@ app.use("/", express.static("src/dist"));
 app.use(cors());
 
 app.get("/tempHumidity", getTempHumidity);
-
-app.post("/", postData);
 
 app.get("/*", (_req, res) => {
   console.log("PINGED? IN SERVER INDEX")

@@ -7,6 +7,7 @@ export default defineConfig({
   root: "src",
   build: {
     minify: true,
+    sourcemap: true,
     rollupOptions: {
         output:{
             manualChunks(id) {
