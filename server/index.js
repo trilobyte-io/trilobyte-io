@@ -4,6 +4,8 @@ import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
 import getTempHumidity from "./controllers/getTempHumidity.js";
+import postSensorData from "./controllers/postSensorData.js";
+
 
 
 
@@ -21,9 +23,7 @@ app.use(cors());
 
 app.get("/tempHumidity", getTempHumidity);
 
-app.post("/postSensorData", (req, res) => {
-  console.log(req.body)
-});
+app.post("/postSensorData", postSensorData);
 
 app.get("/*", (_req, res) => {
   console.log("PINGED? IN SERVER INDEX")

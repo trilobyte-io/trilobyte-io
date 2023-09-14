@@ -6,7 +6,8 @@ CREATE TABLE tempHum (
   id INT AUTO_INCREMENT PRIMARY KEY,
   time DATETIME,
   temperature INT,
-  humidity INT
+  humidity INT,
+  lux INT,
 );
 
 CREATE TABLE user (

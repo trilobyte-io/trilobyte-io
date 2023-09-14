@@ -10,15 +10,17 @@ import pool from "../../db/connect.js"
 // }
 
 const postSensorData = (request, response) => {
-  let query = `INSERT INTO tempHum;`;
-  console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION")
+  let data = request.body;
+  let query = `INSERT INTO tempHum (time, temperature, humidity, lux)
+               VALUES (${new Date()}, ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
+  console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION");
 
   pool.query(query, (error, results) => {
     if (error) {
-      console.log("ERROR IN CONTROLLER: ", error);
-      response.status(500).json({ error: 'An error occurred while fetching data.' });
+      console.log("ERROR IN POST CONTROLLER: ", error);
+      response.status(500).json({ error: 'An error occurred while posting data.' });
     } else {
-      response.status(200).json(results);
+      response.status(200).end();
     }
   });
 }
