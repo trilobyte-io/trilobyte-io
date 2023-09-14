@@ -22,7 +22,7 @@ app.use(cors());
 app.get("/tempHumidity", getTempHumidity);
 
 app.post("/postSensorData", (req, res) => {
-  console.log(req)
+  console.log(req.body)
 });
 
 app.get("/*", (_req, res) => {
