@@ -5,9 +5,9 @@ DROP TABLE IF EXISTS tempHum;
 CREATE TABLE tempHum (
   id INT AUTO_INCREMENT PRIMARY KEY,
   time DATETIME,
-  temperature DECIMAL(10, 8),
-  humidity DECIMAL(10, 8),
-  lux DECIMAL(10, 8),
+  temperature DECIMAL(12, 8),
+  humidity DECIMAL(12, 8),
+  lux DECIMAL(12, 8)
 );
 
 CREATE TABLE user (

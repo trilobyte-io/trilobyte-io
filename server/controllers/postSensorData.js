@@ -22,6 +22,7 @@ const postSensorData = (request, response) => {
 
   pool.query(query, (error, results) => {
     if (error) {
+      console.log(results)
       console.log("ERROR IN POST CONTROLLER: ", error);
       response.status(500).json({ error: 'An error occurred while posting data.' });
     } else {
