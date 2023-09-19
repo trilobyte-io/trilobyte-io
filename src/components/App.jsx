@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TempChart from "./TempChart.jsx";
 import HumidityChart from "./HumidityChart.jsx";
+import LuxChart from "./LuxChart.jsx";
 
 
 const App = () => {
@@ -44,6 +45,7 @@ console.log("SHOULD BE MY DATA", tempHumidity)
       <div className="bg-white-100">
         <TempChart data={tempHumidity} />
         <HumidityChart data={tempHumidity} />
+        <LuxChart data={tempHumidity} />
       </div>
     </>
   );
