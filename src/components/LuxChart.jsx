@@ -7,7 +7,7 @@ ChartJS.register(...registerables);
 const LuxChart = ({ data }) => {
 
     const chartData = {
-      labels: data.map(entry => entry.time.slice(5, 10)),
+      labels: data.map(entry => entry.time),
       datasets: [
       {
         label: 'Lux',
@@ -22,7 +22,7 @@ const LuxChart = ({ data }) => {
           y:
           {
             min: 0,
-            max: 100,
+            max: 3000,
             ticks: {
               stepSize: 10,
               callback: function(val) {

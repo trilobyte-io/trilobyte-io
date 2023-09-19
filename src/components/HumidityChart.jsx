@@ -8,7 +8,7 @@ const HumidityChart = ({ data }) => {
   console.log("DATA IN CHART COMPONENT: ",
   data)
     const chartData = {
-      labels: data.map(entry => entry.time.slice(5, 10)),
+      labels: data.map(entry => entry.time),
       datasets: [{
         label: 'Humidity',
         data: data.map(entry => entry.humidity),
