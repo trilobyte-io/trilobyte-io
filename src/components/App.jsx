@@ -64,7 +64,10 @@ const App = () => {
     <>
       <div className="bg-white-100">
         <button onClick={() => handleTimeRangeButtonClick('pastHour')}>Past Hour</button>
-        <TempChart data={filterDataByTimeRange(allData, timeRange)} />
+        <TempChart
+          data={filterDataByTimeRange(allData, timeRange)}
+          timeRange={timeRange}
+          dataType="Temperature" />
         <HumidityChart data={allData} />
         <LuxChart data={allData} />
       </div>
