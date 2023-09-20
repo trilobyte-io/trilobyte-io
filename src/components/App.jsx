@@ -6,7 +6,8 @@ import LuxChart from "./LuxChart.jsx";
 
 
 const App = () => {
-  const [tempHumidity, setTempHumidity] = useState([])
+  const [allData, setAllData] = useState([])
+  const [timeRange, setTimeRange] = useState("pastDay");
 
 
 
@@ -14,11 +15,47 @@ const App = () => {
     axios.get("http://localhost:3000/allData")
     .then((res) => {
       console.log("RESPONSE FROM AXIOS", res)
-      setTempHumidity(res.data)
+      setAllData(res.data)
     })
     .catch((err) => console.log("Error retrieving temperate and humidity data", err))
   }
 
+  const filterDataByTimeRange = (data, selectedTimeRange) => {
+    // Get the current date and time
+    const currentDate = new Date();
+
+    // Calculate the date based on the selected time range
+    let startDate;
+
+    if (selectedTimeRange === 'pastHour') {
+      startDate = new Date(currentDate);
+      startDate.setHours(currentDate.getHours() - 1);
+    } else if (selectedTimeRange === 'pastDay') {
+      startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - 1);
+    } else if (selectedTimeRange === 'pastWeek') {
+      startDate = new Date(currentDate);
+      startDate.setDate(currentDate.getDate() - 7);
+    } else if (selectedTimeRange === 'pastMonth') {
+      startDate = new Date(currentDate);
+      startDate.setMonth(currentDate.getMonth() - 1);
+    } else if (selectedTimeRange === 'pastYear') {
+      startDate = new Date(currentDate);
+      startDate.setFullYear(currentDate.getFullYear() - 1);
+    }
+
+    // Filter the data based on the calculated start date
+    const filteredData = data.filter((item) => {
+      const timestampDate = new Date(item.time);
+      return timestampDate >= startDate;
+    });
+    console.log("filtered data", filteredData)
+    return filteredData;
+  };
+
+  const handleTimeRangeButtonClick = (timeRange) => {
+    setTimeRange(timeRange); // Update the selected time range
+  };
 
 
   useEffect(getAllData, []);
@@ -26,9 +63,10 @@ const App = () => {
   return (
     <>
       <div className="bg-white-100">
-        <TempChart data={tempHumidity} />
-        <HumidityChart data={tempHumidity} />
-        <LuxChart data={tempHumidity} />
+        <button onClick={() => handleTimeRangeButtonClick('pastHour')}>Past Hour</button>
+        <TempChart data={filterDataByTimeRange(allData, timeRange)} />
+        <HumidityChart data={allData} />
+        <LuxChart data={allData} />
       </div>
     </>
   );

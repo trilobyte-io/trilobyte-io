@@ -5,7 +5,7 @@ ChartJS.register(...registerables);
 
 
 const TempChart = ({ data }) => {
-  console.log("DATA IN CHART COMPONENT: ",
+  console.log("DATA IN TEMP COMPONENT: ",
   data)
     const chartData = {
       labels: data.map(entry => entry.time),
