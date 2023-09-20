@@ -64,12 +64,21 @@ const App = () => {
     <>
       <div className="bg-white-100">
         <button onClick={() => handleTimeRangeButtonClick('pastHour')}>Past Hour</button>
+        <button onClick={() => handleTimeRangeButtonClick('pastDay')}>Past Day</button>
+        <button onClick={() => handleTimeRangeButtonClick('pastWeek')}>Past Week</button>
+        <button onClick={() => handleTimeRangeButtonClick('pastMonth')}>Past Month</button>
         <TempChart
           data={filterDataByTimeRange(allData, timeRange)}
           timeRange={timeRange}
           dataType="Temperature" />
-        <HumidityChart data={allData} />
-        <LuxChart data={allData} />
+        <HumidityChart
+          data={filterDataByTimeRange(allData, timeRange)}
+          timeRange={timeRange}
+          dataType="Humidity" />
+        <LuxChart
+          data={filterDataByTimeRange(allData, timeRange)}
+          timeRange={timeRange}
+          dataType="Lux" />
       </div>
     </>
   );
