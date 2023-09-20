@@ -18,6 +18,13 @@ const LuxChart = ({ data }) => {
     };
 
     const options = {
+      elements: {
+        point: {
+          borderWidth: 0,
+          radius: 10,
+          backgroundColor: 'rgba(0,0,0,0)'
+        },
+      },
         scales: {
           y:
           {
