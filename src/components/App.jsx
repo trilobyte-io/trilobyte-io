@@ -7,7 +7,7 @@ import LuxChart from "./LuxChart.jsx";
 
 const App = () => {
   const [allData, setAllData] = useState([])
-  const [timeRange, setTimeRange] = useState("pastDay");
+  const [timeRange, setTimeRange] = useState("pastYear");
 
 
 
