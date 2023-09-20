@@ -3,7 +3,7 @@ import path from "path";
 import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import getTempHumidity from "./controllers/getTempHumidity.js";
+import getAllData from "./controllers/getAllData.js";
 import postSensorData from "./controllers/postSensorData.js";
 
 
@@ -21,7 +21,7 @@ app.use(express.json());
 app.use("/", express.static("src/dist"));
 app.use(cors());
 
-app.get("/tempHumidity", getTempHumidity);
+app.get("/allData", getAllData);
 
 app.post("/postSensorData", postSensorData);
 

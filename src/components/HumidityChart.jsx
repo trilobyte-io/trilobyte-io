@@ -13,7 +13,7 @@ const HumidityChart = ({ data }) => {
         label: 'Humidity',
         data: data.map(entry => entry.humidity),
         borderColor: 'green',
-        fill: false,
+        fill: true,
       }],
     };
 
@@ -33,6 +33,13 @@ const HumidityChart = ({ data }) => {
           },
         x:
           {
+            time: {
+              unit: 'hour',
+              displayFormats: {
+                hour: 'HH:mm',
+                day: "MM/DD HH:mm"
+              }
+            },
             ticks: {
               callback: function(val, index) {
                 // Hide every 2nd tick label

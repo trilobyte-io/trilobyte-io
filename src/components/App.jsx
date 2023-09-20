@@ -8,27 +8,10 @@ import LuxChart from "./LuxChart.jsx";
 const App = () => {
   const [tempHumidity, setTempHumidity] = useState([])
 
-  // BELOW IS THE LOGIC FOR ADDING NEW DATA POINTS TO BOTH TEMP AND HUMIDITY CHARTS IN REAL TIMEs
-
-  // let newData = {
-  //   temperature: Math.floor(Math.random() * 100) + 1,
-  //   humidity: Math.floor(Math.random() * 100) + 1,
-  //   time: new Date("2015-03-25")
-  // }
-
-  // let addData = (data) => {
-  //   setTimeout(() => {
-  //     let updatedData = [data, ...tempHumidity]
-  //     setTempHumidity(updatedData)
-  //   }, 5000)
-  // }
-
-  // addData(newData)
 
 
-
-  const getTempHumidity = () => {
-    axios.get("http://localhost:3000/tempHumidity")
+  const getAllData = () => {
+    axios.get("http://localhost:3000/allData")
     .then((res) => {
       console.log("RESPONSE FROM AXIOS", res)
       setTempHumidity(res.data)
@@ -38,8 +21,8 @@ const App = () => {
 
 
 
-  useEffect(getTempHumidity, []);
-console.log("SHOULD BE MY DATA", tempHumidity)
+  useEffect(getAllData, []);
+
   return (
     <>
       <div className="bg-white-100">
