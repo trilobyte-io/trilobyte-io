@@ -1,21 +1,25 @@
 import React from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Line } from 'react-chartjs-2'
+import formatDate from '../frontend-utils/formatDate.js';
+
 ChartJS.register(...registerables);
 
 
-const LuxChart = ({ data }) => {
+const LuxChart = ({ data, timeRange }) => {
 
-    const chartData = {
-      labels: data.map(entry => entry.time),
-      datasets: [
-      {
-        label: 'Lux',
-        data: data.map(entry => entry.lux),
-        borderColor: 'blue',
-        fill: false,
-      }],
-    };
+  const chartData = {
+    labels: data.map(entry => {
+      return formatDate(entry.time, timeRange)
+    }),
+    datasets: [
+    {
+      label: 'Lux',
+      data: data.map(entry => entry.lux),
+      borderColor: 'blue',
+      fill: false,
+    }],
+  };
 
     const options = {
       elements: {

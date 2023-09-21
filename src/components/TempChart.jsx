@@ -1,22 +1,23 @@
 import React from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Line } from 'react-chartjs-2'
+import formatDate from '../frontend-utils/formatDate.js';
 ChartJS.register(...registerables);
 
 
-const TempChart = ({ data }) => {
-  console.log("DATA IN TEMP COMPONENT: ",
-  data)
-    const chartData = {
-      labels: data.map(entry => entry.time),
-      datasets: [
-      {
-        label: 'Temperature',
-        data: data.map(entry => entry.temperature),
-        borderColor: 'red',
-        fill: false,
-      }],
-    };
+const TempChart = ({ data, timeRange }) => {
+
+  const chartData = {
+    labels: data.map(entry => {
+      return formatDate(entry.time, timeRange)
+    }),
+    datasets: [{
+      label: 'Temperature',
+      data: data.map(entry => entry.temperature),
+      borderColor: 'red',
+      fill: false,
+    }],
+  };
 
     const options = {
       elements: {

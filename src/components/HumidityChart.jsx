@@ -1,21 +1,23 @@
 import React from 'react';
 import { Chart as ChartJS, registerables } from 'chart.js';
 import { Line } from 'react-chartjs-2'
+import formatDate from '../frontend-utils/formatDate.js';
 ChartJS.register(...registerables);
 
 
-const HumidityChart = ({ data }) => {
-  console.log("DATA IN CHART COMPONENT: ",
-  data)
-    const chartData = {
-      labels: data.map(entry => entry.time),
-      datasets: [{
-        label: 'Humidity',
-        data: data.map(entry => entry.humidity),
-        borderColor: 'green',
-        fill: true,
-      }],
-    };
+const HumidityChart = ({ data, timeRange }) => {
+
+  const chartData = {
+    labels: data.map(entry => {
+      return formatDate(entry.time, timeRange)
+    }),
+    datasets: [{
+      label: 'Humidity',
+      data: data.map(entry => entry.humidity),
+      borderColor: 'green',
+      fill: true,
+    }],
+  };
 
     const options = {
       elements: {

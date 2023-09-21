@@ -47,11 +47,8 @@ const App = () => {
     // Filter the data based on the calculated start date
     const filteredData = data.filter((item) => {
       const timestampDate = new Date(item.time);
-      console.log(timestampDate)
-      console.log(item.time)
       return timestampDate >= startDate;
     });
-    console.log("filtered data", filteredData)
     return filteredData;
   };
 
