@@ -8,7 +8,7 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
   };
 
   return (
-    <div className="relative inline-block text-left">
+    <div className="inline-block text-left">
       <div>
         <button
           onClick={toggleDropdown}
@@ -19,7 +19,7 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
       </div>
 
       {isOpen && (
-        <div className="origin-top-right right-0 mt-2 w-48 rounded-md shadow-lg">
+        <div className="origin-top-right right-0 w-48 rounded-md shadow-lg">
           <div className="bg-white rounded-md shadow-xs w-48 absolute z-20">
             <button
               onClick={() => {
