@@ -52,7 +52,7 @@ const HumidityChart = ({ data, timeRange }) => {
             ticks: {
               callback: function(val, index) {
                 if (timeRange === "pastDay") {
-                  return index % 8 === 0 ? this.getLabelForValue(val) : '';
+                  return index % 24 === 0 ? this.getLabelForValue(val) : '';
                 }
                 return index % 4 === 0 ? this.getLabelForValue(val) : '';
               },
