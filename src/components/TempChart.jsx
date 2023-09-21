@@ -45,7 +45,9 @@ const TempChart = ({ data, timeRange }) => {
           {
             ticks: {
               callback: function(val, index) {
-                // Hide every 2nd tick label
+                if (timeRange === "pastDay") {
+                  return index % 8 === 0 ? this.getLabelForValue(val) : '';
+                }
                 return index % 4 === 0 ? this.getLabelForValue(val) : '';
               },
             }
