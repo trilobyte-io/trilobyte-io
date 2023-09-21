@@ -47,7 +47,7 @@ const LuxChart = ({ data, timeRange }) => {
             ticks: {
               callback: function(val, index) {
                 // Hide every 2nd tick label
-                return index % 2 === 0 ? this.getLabelForValue(val) : '';
+                return index % 4 === 0 ? this.getLabelForValue(val) : '';
               },
             }
           },
