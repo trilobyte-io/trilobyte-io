@@ -3,6 +3,7 @@ import axios from "axios";
 import TempChart from "./TempChart.jsx";
 import HumidityChart from "./HumidityChart.jsx";
 import LuxChart from "./LuxChart.jsx";
+import DropdownMenu from "./DropdownMenu.jsx";
 
 
 const App = () => {
@@ -62,10 +63,7 @@ const App = () => {
   return (
     <>
       <div className="bg-white-100">
-        <button onClick={() => handleTimeRangeButtonClick('pastHour')}>Past Hour</button>
-        <button onClick={() => handleTimeRangeButtonClick('pastDay')}>Past Day</button>
-        <button onClick={() => handleTimeRangeButtonClick('pastWeek')}>Past Week</button>
-        <button onClick={() => handleTimeRangeButtonClick('pastMonth')}>Past Month</button>
+        <DropdownMenu handleTimeRangeButtonClick={handleTimeRangeButtonClick} />
         <TempChart
           data={filterDataByTimeRange(allData, timeRange)}
           timeRange={timeRange}
