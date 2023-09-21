@@ -10,9 +10,9 @@ export default function formatDate (datetime, timeRange) {
   });
 
   if (timeRange === "pastHour") {
-    return formattedDate[0] < 10 ? formattedDate.toString().slice(5, 13) : formattedDate.toString().slice(5, 14)
+    return formattedDate[0] < 1 ? formattedDate.toString().slice(5, 13) : formattedDate.toString().slice(5, 14)
   } else if (timeRange === "pastDay") {
-    return formattedDate[0] < 10 ? formattedDate.toString().slice(5, 13) : formattedDate.toString().slice(5, 14)
+    return formattedDate[0] < 1 ? formattedDate.toString().slice(5, 13) : formattedDate.toString().slice(5, 14)
   } else if (timeRange === "pastWeek") {
     return formattedDate.toString().slice(0, 4);
   } else if (timeRange === "pastMonth") {
