@@ -26,7 +26,7 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
                 handleTimeRangeButtonClick('pastHour');
                 toggleDropdown();
               }}
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className="w-48 text-left block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Past Hour
             </button>
@@ -35,7 +35,7 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
                 handleTimeRangeButtonClick('pastDay');
                 toggleDropdown();
               }}
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className="w-48 text-left block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Past Day
             </button>
@@ -44,7 +44,7 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
                 handleTimeRangeButtonClick('pastWeek');
                 toggleDropdown();
               }}
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className="w-48 text-left block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Past Week
             </button>
@@ -53,7 +53,7 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
                 handleTimeRangeButtonClick('pastMonth');
                 toggleDropdown();
               }}
-              className="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+              className="w-48 text-left block px-4 py-2 text-gray-800 hover:bg-gray-200"
             >
               Past Month
             </button>
