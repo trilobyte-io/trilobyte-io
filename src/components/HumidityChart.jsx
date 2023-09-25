@@ -19,47 +19,47 @@ const HumidityChart = ({ data, timeRange }) => {
     }],
   };
 
-    const options = {
-      elements: {
-        point: {
-          borderWidth: 0,
-          radius: 10,
-          backgroundColor: 'rgba(0,0,0,0)'
-        }
-      },
-      scales: {
-        y:
-          {
-            min: 0,
-            max: 100,
+  const options = {
+    elements: {
+      point: {
+        borderWidth: 0,
+        radius: 10,
+        backgroundColor: 'rgba(0,0,0,0)'
+      }
+    },
+    scales: {
+      y:
+        {
+          min: 0,
+          max: 100,
 
-            ticks: {
-              stepSize: 10,
-              callback: function(val) {
-                return val + "%"
-              },
-            }
-          },
-        x:
-          {
-            time: {
-              unit: 'hour',
-              displayFormats: {
-                hour: 'HH:mm',
-                day: "MM/DD HH:mm"
-              }
+          ticks: {
+            stepSize: 10,
+            callback: function(val) {
+              return val + "%"
             },
-            ticks: {
-              callback: function(val, index) {
-                if (timeRange === "pastDay") {
-                  return index % 24 === 0 ? this.getLabelForValue(val) : '';
-                }
-                return index % 4 === 0 ? this.getLabelForValue(val) : '';
-              },
+          }
+        },
+      x:
+        {
+          time: {
+            unit: 'hour',
+            displayFormats: {
+              hour: 'HH:mm',
+              day: "MM/DD HH:mm"
             }
           },
-      },
-    };
+          ticks: {
+            callback: function(val, index) {
+              if (timeRange === "pastDay") {
+                return index % 24 === 0 ? this.getLabelForValue(val) : '';
+              }
+              return index % 4 === 0 ? this.getLabelForValue(val) : '';
+            },
+          }
+        },
+    },
+  };
 
   return <Line data={chartData} options={options}  />;
 }

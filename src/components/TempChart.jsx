@@ -19,41 +19,41 @@ const TempChart = ({ data, timeRange }) => {
     }],
   };
 
-    const options = {
-      elements: {
-        point: {
-          borderWidth: 0,
-          radius: 10,
-          backgroundColor: 'rgba(0,0,0,0)'
-        },
+  const options = {
+    elements: {
+      point: {
+        borderWidth: 0,
+        radius: 10,
+        backgroundColor: 'rgba(0,0,0,0)'
       },
-        scales: {
-          y:
-          {
-            min: 0,
-            max: 100,
+    },
+      scales: {
+        y:
+        {
+          min: 0,
+          max: 100,
 
-            ticks: {
-              stepSize: 10,
-              callback: function(val) {
-                // Hide every 2nd tick label
-                return val + "°F"
-              },
-            }
-          },
-          x:
-          {
-            ticks: {
-              callback: function(val, index) {
-                if (timeRange === "pastDay") {
-                  return index % 24 === 0 ? this.getLabelForValue(val) : '';
-                }
-                return index % 4 === 0 ? this.getLabelForValue(val) : '';
-              },
-            }
-          },
-        }
-    };
+          ticks: {
+            stepSize: 10,
+            callback: function(val) {
+              // Hide every 2nd tick label
+              return val + "°F"
+            },
+          }
+        },
+        x:
+        {
+          ticks: {
+            callback: function(val, index) {
+              if (timeRange === "pastDay") {
+                return index % 24 === 0 ? this.getLabelForValue(val) : '';
+              }
+              return index % 4 === 0 ? this.getLabelForValue(val) : '';
+            },
+          }
+        },
+      }
+  };
 
   return <Line data={chartData} options={options}  />;
 }

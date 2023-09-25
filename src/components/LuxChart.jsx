@@ -21,41 +21,41 @@ const LuxChart = ({ data, timeRange }) => {
     }],
   };
 
-    const options = {
-      elements: {
-        point: {
-          borderWidth: 0,
-          radius: 10,
-          backgroundColor: 'rgba(0,0,0,0)'
-        },
+  const options = {
+    elements: {
+      point: {
+        borderWidth: 0,
+        radius: 10,
+        backgroundColor: 'rgba(0,0,0,0)'
       },
-        scales: {
-          y:
-          {
-            min: 0,
-            max: 3000,
-            ticks: {
-              stepSize: 10,
-              callback: function(val) {
-                // Hide every 2nd tick label
-                return val
-              },
-            }
-          },
-          x:
-          {
-            ticks: {
-              callback: function(val, index) {
-                // Hide every 2nd tick label
-                if (timeRange === "pastDay") {
-                  return index % 24 === 0 ? this.getLabelForValue(val) : '';
-                }
-                return index % 4 === 0 ? this.getLabelForValue(val) : '';
-              },
-            }
-          },
-        }
-    };
+    },
+      scales: {
+        y:
+        {
+          min: 0,
+          max: 3000,
+          ticks: {
+            stepSize: 10,
+            callback: function(val) {
+              // Hide every 2nd tick label
+              return val
+            },
+          }
+        },
+        x:
+        {
+          ticks: {
+            callback: function(val, index) {
+              // Hide every 2nd tick label
+              if (timeRange === "pastDay") {
+                return index % 24 === 0 ? this.getLabelForValue(val) : '';
+              }
+              return index % 4 === 0 ? this.getLabelForValue(val) : '';
+            },
+          }
+        },
+      }
+  };
 
   return <Line data={chartData} options={options}  />;
 }
