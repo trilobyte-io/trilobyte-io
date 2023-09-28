@@ -30,6 +30,7 @@ const HumidityChart = ({ data, timeRange }) => {
         data: filterDataPoints(data, 'humidity', timeRange),
         borderColor: 'green',
         fill: true,
+        spanGaps: true,
       },
       {
         label: 'Temperature',
