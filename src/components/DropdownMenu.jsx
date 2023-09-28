@@ -57,6 +57,15 @@ const DropdownMenu = ({ handleTimeRangeButtonClick }) => {
             >
               Past Month
             </button>
+            <button
+              onClick={() => {
+                handleTimeRangeButtonClick('pastYear');
+                toggleDropdown();
+              }}
+              className="w-48 text-left block px-4 py-2 text-gray-800 hover:bg-gray-200"
+            >
+              Past Year
+            </button>
           </div>
         </div>
       )}
