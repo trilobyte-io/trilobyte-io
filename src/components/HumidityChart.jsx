@@ -12,11 +12,23 @@ const HumidityChart = ({ data, timeRange }) => {
       return formatDate(entry.time, timeRange)
     }),
     datasets: [{
-      label: 'Humidity',
-      data: data.map(entry => entry.humidity),
-      borderColor: 'green',
-      fill: true,
-    }],
+        label: 'Humidity',
+        data: data.map(entry => entry.humidity),
+        borderColor: 'green',
+        fill: true,
+      },
+      {
+        label: 'Temperature',
+        data: data.map(entry => entry.temperature),
+        borderColor: 'blue',
+        fill: true,
+      },
+      {
+        label: 'Lux',
+        data: data.map(entry => entry.lux),
+        borderColor: 'red',
+        fill: true,
+      }],
   };
 
   const options = {

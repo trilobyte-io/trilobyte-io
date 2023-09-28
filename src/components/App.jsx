@@ -4,6 +4,7 @@ import TempChart from "./TempChart.jsx";
 import HumidityChart from "./HumidityChart.jsx";
 import LuxChart from "./LuxChart.jsx";
 import DropdownMenu from "./DropdownMenu.jsx";
+import filterDataByTimeRange from "../frontend-utils/filterDataByTimeRange.js";
 
 
 const App = () => {
@@ -20,38 +21,6 @@ const App = () => {
     })
     .catch((err) => console.log("Error retrieving temperate and humidity data", err))
   }
-
-  const filterDataByTimeRange = (data, selectedTimeRange) => {
-    // Get the current date and time
-    const currentDate = new Date();
-
-    // Calculate the date based on the selected time range
-    let startDate;
-
-    if (selectedTimeRange === 'pastHour') {
-      startDate = new Date(currentDate);
-      startDate.setHours(currentDate.getHours() - 1);
-    } else if (selectedTimeRange === 'pastDay') {
-      startDate = new Date(currentDate);
-      startDate.setDate(currentDate.getDate() - 1);
-    } else if (selectedTimeRange === 'pastWeek') {
-      startDate = new Date(currentDate);
-      startDate.setDate(currentDate.getDate() - 7);
-    } else if (selectedTimeRange === 'pastMonth') {
-      startDate = new Date(currentDate);
-      startDate.setMonth(currentDate.getMonth() - 1);
-    } else if (selectedTimeRange === 'pastYear') {
-      startDate = new Date(currentDate);
-      startDate.setFullYear(currentDate.getFullYear() - 1);
-    }
-
-    // Filter the data based on the calculated start date
-    const filteredData = data.filter((item) => {
-      const timestampDate = new Date(item.time);
-      return timestampDate >= startDate;
-    });
-    return filteredData;
-  };
 
   const handleTimeRangeButtonClick = (timeRange) => {
     setTimeRange(timeRange); // Update the selected time range
