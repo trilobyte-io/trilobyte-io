@@ -18,6 +18,8 @@ const HumidityChart = ({ data, timeRange }) => {
         }
           return result;
       }, [])
+    } else {
+      return dataSet.map(entry => entry[dataPoint])
     }
   }
 
@@ -34,15 +36,17 @@ const HumidityChart = ({ data, timeRange }) => {
       },
       {
         label: 'Temperature',
-        data: data.map(entry => entry.temperature),
+        data: filterDataPoints(data, 'temperature', timeRange),
         borderColor: 'blue',
         fill: true,
+        spanGaps: true,
       },
       {
         label: 'Lux',
-        data: data.map(entry => entry.lux),
+        data: filterDataPoints(data, 'lux', timeRange),
         borderColor: 'red',
         fill: true,
+        spanGaps: true,
       }],
   };
 
