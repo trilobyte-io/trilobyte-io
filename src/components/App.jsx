@@ -9,7 +9,7 @@ import filterDataByTimeRange from "../frontend-utils/filterDataByTimeRange.js";
 
 const App = () => {
   const [allData, setAllData] = useState([])
-  const [timeRange, setTimeRange] = useState("pastYear");
+  const [timeRange, setTimeRange] = useState("pastMonth");
 
 
 

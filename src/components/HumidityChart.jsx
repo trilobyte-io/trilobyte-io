@@ -11,7 +11,7 @@ const HumidityChart = ({ data, timeRange }) => {
 
     if (timeRange === "pastYear") {
       return dataSet.reduce((result, entry, index) => {
-        if (index % 365 === 0) {
+        if (index % 100 === 0) {
           result.push(entry[dataPoint])
         } else {
           result.push(null);
