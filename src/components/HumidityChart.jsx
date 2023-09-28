@@ -7,13 +7,24 @@ ChartJS.register(...registerables);
 
 const HumidityChart = ({ data, timeRange }) => {
 
+  const filterDataPoints = (dataSet, dataPoint, timeRange) => {
+
+    if (timeRange === "pastWeek" || timeRange === "pastMonth") {
+      dataSet.map((entry, index) => {
+        if (index % 7) {
+          return entry.dataPoint
+        }
+      })
+    }
+  }
+
   const chartData = {
     labels: data.map(entry => {
       return formatDate(entry.time, timeRange)
     }),
     datasets: [{
         label: 'Humidity',
-        data: data.map(entry => entry.humidity),
+        data: filterDataPoints(data, 'humidity', timeRange),
         borderColor: 'green',
         fill: true,
       },
