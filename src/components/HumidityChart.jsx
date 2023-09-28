@@ -10,7 +10,7 @@ const HumidityChart = ({ data, timeRange }) => {
   const filterDataPoints = (dataSet, dataPoint, timeRange) => {
 
     if (timeRange === "pastWeek" || timeRange === "pastMonth") {
-      dataSet.map((entry, index) => {
+      return dataSet.map((entry, index) => {
         if (index % 7) {
           return entry.dataPoint
         }
