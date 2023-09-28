@@ -13,6 +13,8 @@ const HumidityChart = ({ data, timeRange }) => {
       return dataSet.reduce((result, entry, index) => {
         if (index % 7 === 0) {
           result.push(entry[dataPoint])
+        } else {
+          result.push(null);
         }
           return result;
       }, [])
