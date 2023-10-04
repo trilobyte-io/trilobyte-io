@@ -68,7 +68,10 @@ const HumidityChart = ({ data, timeRange }) => {
         borderWidth: 0,
         radius: 10,
         backgroundColor: 'rgba(0,0,0,0)'
-      }
+      },
+      line: {
+        tension: 0.2, // Adjust the line tension as needed
+      },
     },
     scales: {
       temperature: {
