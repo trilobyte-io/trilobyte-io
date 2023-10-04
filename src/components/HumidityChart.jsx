@@ -40,26 +40,29 @@ const HumidityChart = ({ data, timeRange }) => {
         label: 'Humidity',
         data: filterDataPoints(data, 'humidity', timeRange),
         borderColor: 'green',
-        fill: true,
         spanGaps: true,
+        yAxisID: 'humidity'
       },
       {
         label: 'Temperature',
         data: filterDataPoints(data, 'temperature', timeRange),
         borderColor: 'blue',
-        fill: true,
         spanGaps: true,
+        yAxisID: 'temperature'
       },
       {
         label: 'Lux',
         data: filterDataPoints(data, 'lux', timeRange),
         borderColor: 'red',
-        fill: true,
         spanGaps: true,
+        yAxisID: 'lux'
       }],
   };
 
   const options = {
+    grid: {
+      display: false,
+    },
     elements: {
       point: {
         borderWidth: 0,
@@ -68,39 +71,61 @@ const HumidityChart = ({ data, timeRange }) => {
       }
     },
     scales: {
-      y:
-        {
-          min: 0,
-          max: 100,
-
-          ticks: {
-            stepSize: 10,
-            callback: function(val) {
-              return val + "%"
-            },
+      temperature: {
+        display: false,
+        type: 'linear',
+        position: 'left',
+        title: {
+          display: false,
+          text: 'Temperature (°C)',
+        },
+        min: 0,
+        max: 100,
+      },
+      humidity: {
+        display: false,
+        type: 'linear',
+        position: 'left',
+        title: {
+          display: false,
+          text: 'Temperature (°C)',
+        },
+        min: 0,
+        max: 100,
+      },
+      lux: {
+        display: false,
+        type: 'linear',
+        position: 'right',
+        title: {
+          display: false,
+          text: 'Lux',
+        },
+        min: 0,
+        max: 3000,
+      },
+      x: {
+        grid: {
+          display: false,
+        },
+        time: {
+          unit: 'hour',
+          displayFormats: {
+            hour: 'HH:mm',
+            day: "MM/DD HH:mm"
           }
         },
-      x:
-        {
-          time: {
-            unit: 'hour',
-            displayFormats: {
-              hour: 'HH:mm',
-              day: "MM/DD HH:mm"
+        ticks: {
+          callback: function(val, index) {
+            if (timeRange === "pastDay") {
+              return index % 24 === 0 ? this.getLabelForValue(val) : '';
             }
+            return index % 4 === 0 ? this.getLabelForValue(val) : '';
           },
-          ticks: {
-            callback: function(val, index) {
-              if (timeRange === "pastDay") {
-                return index % 24 === 0 ? this.getLabelForValue(val) : '';
-              }
-              return index % 4 === 0 ? this.getLabelForValue(val) : '';
-            },
-          }
         },
+      },
     },
   };
-
   return <Line data={chartData} options={options}  />;
 }
 
