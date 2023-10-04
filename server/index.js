@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { dirname } from "path";
 import getAllData from "./controllers/getAllData.js";
 import postSensorData from "./controllers/postSensorData.js";
+import postRealTimeData from "./controllers/postRealTimeData.js";
 
 
 
@@ -24,6 +25,8 @@ app.use(cors());
 app.get("/allData", getAllData);
 
 app.post("/postSensorData", postSensorData);
+
+app.post("/postRealTimeData", postRealTimeData);
 
 app.get("/*", (_req, res) => {
   console.log("PINGED? IN SERVER INDEX")

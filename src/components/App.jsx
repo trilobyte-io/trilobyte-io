@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import TempChart from "./TempChart.jsx";
 import HumidityChart from "./HumidityChart.jsx";
-import LuxChart from "./LuxChart.jsx";
 import DropdownMenu from "./DropdownMenu.jsx";
 import filterDataByTimeRange from "../frontend-utils/filterDataByTimeRange.js";
 
@@ -30,23 +28,13 @@ const App = () => {
   useEffect(getAllData, []);
 
   return (
-    <>
-      <div className="bg-white-100">
+      <div className="bg-gray-800 min-h-screen">
         <DropdownMenu handleTimeRangeButtonClick={handleTimeRangeButtonClick} />
-        <TempChart
-          data={filterDataByTimeRange(allData, timeRange)}
-          timeRange={timeRange}
-          dataType="Temperature" />
         <HumidityChart
           data={filterDataByTimeRange(allData, timeRange)}
           timeRange={timeRange}
           dataType="Humidity" />
-        <LuxChart
-          data={filterDataByTimeRange(allData, timeRange)}
-          timeRange={timeRange}
-          dataType="Lux" />
       </div>
-    </>
   );
 };
 

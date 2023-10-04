@@ -1,16 +1,15 @@
 import pool from "../../db/connect.js"
 
-const postSensorData = (request, response) => {
+const postRealTimeData = (request, response) => {
   let data = request.body;
   const currentDate = new Date();
-  console.log(currentDate)
 
   const mysqlDateTime = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
 
-  let query = `INSERT INTO tempHum (time, temperature, humidity, lux)
+  let query = `INSERT INTO realTimeData (time, temperature, humidity, lux)
                VALUES ('${mysqlDateTime}', ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
-  console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION");
+  console.log("REQUEST IS MAKING IT TO RealTime CONTROLLER FUNCTION");
 
   pool.query(query, (error, results) => {
     if (error) {
@@ -23,4 +22,4 @@ const postSensorData = (request, response) => {
   });
 }
 
-export default postSensorData;
+export default postRealTimeData;
