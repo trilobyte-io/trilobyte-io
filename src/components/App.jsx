@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import HumidityChart from "./HumidityChart.jsx";
 import DropdownMenu from "./DropdownMenu.jsx";
+import RealTimeGaugeContainer from "./RealTimeGaugeContainer.jsx";
 import filterDataByTimeRange from "../frontend-utils/filterDataByTimeRange.js";
 
 
@@ -29,6 +30,7 @@ const App = () => {
 
   return (
       <div className="bg-gray-800 min-h-screen">
+        <RealTimeGaugeContainer />
         <DropdownMenu handleTimeRangeButtonClick={handleTimeRangeButtonClick} />
         <HumidityChart
           data={filterDataByTimeRange(allData, timeRange)}
