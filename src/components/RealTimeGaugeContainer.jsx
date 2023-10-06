@@ -8,7 +8,7 @@ const RealTimeGaugeContainer = () => {
     const newWebSocket = new WebSocket('ws://localhost:3001');
 
     // Handle WebSocket open event
-    newWebSocket.addEventListener('open', (event) => {
+    newWebSocket.addEventListener('open', () => {
       if (newWebSocket.readyState === WebSocket.OPEN) {
         console.log('WebSocket Connection is OPEN');
       } else {
@@ -45,7 +45,8 @@ const RealTimeGaugeContainer = () => {
 
   return (
     <div>
-      <p>Message from Server: {message}</p>
+      {console.log(message)}
+      <p>Message from Server</p>
       <button onClick={sendMessage}>Send Message to Server</button>
     </div>
   );

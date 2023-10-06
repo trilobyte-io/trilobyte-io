@@ -7,7 +7,7 @@ import http from "http";
 import { WebSocketServer } from 'ws';
 import getAllData from "./controllers/getAllData.js";
 import postSensorData from "./controllers/postSensorData.js";
-import postRealTimeData from "./controllers/postRealTimeData.js";
+// import postRealTimeData from "./controllers/postRealTimeData.js";
 
 const port = 3000;
 
@@ -23,6 +23,18 @@ app.use(express.json());
 app.use("/", express.static("src/dist"));
 app.use(cors());
 
+const myMiddleware = (req, res, next) => {
+  // First function
+  const message = req.body
+  wss.clients.forEach((client) => {
+      client.send(JSON.stringify(message));
+  });
+  res.status(200).json("POST request handled successfully").end();
+  next(); // Call next to proceed to the next function
+};
+
+
+
 
 // WebSocket connection handling
 wss.on('connection', () => {
@@ -34,12 +46,12 @@ wss.on('connection', () => {
 
 app.get("/allData", getAllData);
 
-app.post("/postSensorData", postSensorData);
+app.post("/postSensorData", myMiddleware, postSensorData);
 
 
 
-app.post("/postRealTimeData", (req, res) => {
-  const message = req.body.hey
+app.post("/postRealTimeData",  (req, res) => {
+  const message = req.body
   wss.clients.forEach((client) => {
       client.send(JSON.stringify(message));
   });
