@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const RealTimeGaugeContainer = () => {
-  const [message, setMessage] = useState('');
+  const [realTimeSensorData, setRealTimeSensorData] = useState({});
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
@@ -22,8 +22,8 @@ const RealTimeGaugeContainer = () => {
 
     // Handle incoming WebSocket messages
     newWebSocket.addEventListener('message', (event) => {
-      const receivedMessage = JSON.parse(event.data.toString());
-      setMessage(receivedMessage);
+      const receivedSensorData = JSON.parse(event.data.toString());
+      setRealTimeSensorData(receivedSensorData);
     });
 
     setWs(newWebSocket);
@@ -45,8 +45,10 @@ const RealTimeGaugeContainer = () => {
 
   return (
     <div>
-      {console.log(message)}
-      <p>Message from Server</p>
+      {console.log(realTimeSensorData)}
+      <p>Temperature is: ${realTimeSensorData.SHT_T}</p>
+      <p>Humidity is: ${realTimeSensorData.SHT_RH}</p>
+      <p>Lux is: ${realTimeSensorData.TSL_lux}</p>
       <button onClick={sendMessage}>Send Message to Server</button>
     </div>
   );
