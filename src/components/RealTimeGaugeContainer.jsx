@@ -36,20 +36,12 @@ const RealTimeGaugeContainer = () => {
     };
   }, []);
 
-  // Send a message to the server
-  const sendMessage = () => {
-    if (ws) {
-      ws.send('Hello, Server!');
-    }
-  };
-
   return (
     <div>
       {console.log(realTimeSensorData)}
       <p>Temperature is: {realTimeSensorData.SHT_T}</p>
       <p>Humidity is: {realTimeSensorData.SHT_RH}</p>
       <p>Lux is: {realTimeSensorData.TSL_lux}</p>
-      <button onClick={sendMessage}>Send Message to Server</button>
     </div>
   );
 };
