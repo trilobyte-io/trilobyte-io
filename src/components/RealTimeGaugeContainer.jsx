@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+/*eslint no-unused-vars: "error"*/
+
 
 const RealTimeGaugeContainer = () => {
   const [realTimeSensorData, setRealTimeSensorData] = useState({});
+// eslint-disable-next-line no-unused-vars
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
@@ -25,9 +28,7 @@ const RealTimeGaugeContainer = () => {
       const receivedSensorData = JSON.parse(event.data.toString());
       setRealTimeSensorData(receivedSensorData);
     });
-
     setWs(newWebSocket);
-
     // Clean up the WebSocket connection when the component unmounts
     return () => {
       if (newWebSocket) {
