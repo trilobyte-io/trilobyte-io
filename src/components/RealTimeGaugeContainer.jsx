@@ -39,17 +39,15 @@ const RealTimeGaugeContainer = () => {
   }, []);
 
   return (
-    <div>
-      {console.log(realTimeSensorData)}
-      <div className="px-4">
-        <p>Temperature is: {realTimeSensorData.SHT_T}</p>
-        <p>Humidity is: {realTimeSensorData.SHT_RH}</p>
-        <p>Lux is: {realTimeSensorData.TSL_lux}</p>
-        <div className="flex justify-center gap-16">
-          <RealTimeGauge />
-          <RealTimeGauge />
-          <RealTimeGauge />
-        </div>
+    <div className="max-w-screen-xl mx-auto flex justify-between">
+      <div className="w-1/3 p-4 h-full">
+        <RealTimeGauge />
+      </div>
+      <div className="w-1/3 p-4">
+        <RealTimeGauge />
+      </div>
+      <div className="w-1/3 p-4">
+        <RealTimeGauge />
       </div>
     </div>
   );

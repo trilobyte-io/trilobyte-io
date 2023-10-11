@@ -23,13 +23,11 @@ const RealTimeGauge = () => {
     tooltips: {
       enabled: false, // Disable tooltips for a cleaner appearance
     },
+    responsive: true,
+    maintainAspectRatio: false,
   };
 
-  return (
-    <div>
-      <Doughnut data={data} options={options} />
-    </div>
-  )
+  return <Doughnut data={data} options={options} />
 };
 
 
