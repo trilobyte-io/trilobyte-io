@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import RealTimeGauge from './RealTimeGauge.jsx';
 /*eslint no-unused-vars: "error"*/
 
 
@@ -40,9 +41,16 @@ const RealTimeGaugeContainer = () => {
   return (
     <div>
       {console.log(realTimeSensorData)}
-      <p>Temperature is: {realTimeSensorData.SHT_T}</p>
-      <p>Humidity is: {realTimeSensorData.SHT_RH}</p>
-      <p>Lux is: {realTimeSensorData.TSL_lux}</p>
+      <div className="px-4">
+        <p>Temperature is: {realTimeSensorData.SHT_T}</p>
+        <p>Humidity is: {realTimeSensorData.SHT_RH}</p>
+        <p>Lux is: {realTimeSensorData.TSL_lux}</p>
+        <div className="flex justify-center gap-16">
+          <RealTimeGauge />
+          <RealTimeGauge />
+          <RealTimeGauge />
+        </div>
+      </div>
     </div>
   );
 };
