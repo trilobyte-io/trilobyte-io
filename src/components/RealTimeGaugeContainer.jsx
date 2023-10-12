@@ -40,8 +40,9 @@ const RealTimeGaugeContainer = () => {
 
   return (
     <div className="max-w-screen-xl mx-auto flex justify-between">
-      <div className="w-1/3 p-4 h-full">
+      <div className="w-1/3 p-4 relative">
         <RealTimeGauge />
+
       </div>
       <div className="w-1/3 p-4">
         <RealTimeGauge />
