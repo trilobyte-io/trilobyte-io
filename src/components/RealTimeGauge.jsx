@@ -7,8 +7,8 @@ const RealTimeGauge = () => {
   const options = {
     responsive: true,
     maintainAspectRatio: false,
-    circumference: 180,
-    rotation: 270
+    circumference: 270,
+    rotation: -135
   };
 
   const data = {

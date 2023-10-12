@@ -29,13 +29,15 @@ const App = () => {
   useEffect(getAllData, []);
 
   return (
-      <div className="bg-gray-800 min-h-screen">
-        <RealTimeGaugeContainer />
-        <DropdownMenu handleTimeRangeButtonClick={handleTimeRangeButtonClick} />
-        <HumidityChart
-          data={filterDataByTimeRange(allData, timeRange)}
-          timeRange={timeRange}
-          dataType="Humidity" />
+      <div className="bg-gray-800 min-h-screen flex justify-center">
+        <div className="max-w-screen-xl w-full">
+          <RealTimeGaugeContainer />
+          <DropdownMenu handleTimeRangeButtonClick={handleTimeRangeButtonClick} />
+          <HumidityChart
+            data={filterDataByTimeRange(allData, timeRange)}
+            timeRange={timeRange}
+            dataType="Humidity" />
+          </div>
       </div>
   );
 };
