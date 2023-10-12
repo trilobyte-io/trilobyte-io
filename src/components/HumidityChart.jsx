@@ -7,6 +7,9 @@ ChartJS.register(...registerables);
 
 const HumidityChart = ({ data, timeRange }) => {
 
+
+
+
   const filterDataPoints = (dataSet, dataPoint, timeRange) => {
 
     if (timeRange === "pastYear") {
