@@ -31,7 +31,6 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "@esbuild/darwin-arm64": "^0.19.4",
     "axios": "^1.4.0",
     "chart.js": "^4.4.0",
     "cors": "^2.8.5",
@@ -45,7 +44,6 @@
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-gauge-chart": "^0.4.1",
     "tailwindcss": "^3.2.4",
     "ws": "^8.14.2"
   }
