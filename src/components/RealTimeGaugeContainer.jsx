@@ -9,6 +9,9 @@ const RealTimeGaugeContainer = () => {
     humidity: null,
     lux: null
   });
+
+console.log(realTimeSensorData);
+
 // eslint-disable-next-line no-unused-vars
   const [ws, setWs] = useState(null);
 
