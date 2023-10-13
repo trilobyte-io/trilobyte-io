@@ -4,7 +4,11 @@ import RealTimeGauge from './RealTimeGauge.jsx';
 
 
 const RealTimeGaugeContainer = () => {
-  const [realTimeSensorData, setRealTimeSensorData] = useState({});
+  const [realTimeSensorData, setRealTimeSensorData] = useState({
+    temperature: null,
+    humidity: null,
+    lux: null
+  });
 // eslint-disable-next-line no-unused-vars
   const [ws, setWs] = useState(null);
 
@@ -42,7 +46,8 @@ const RealTimeGaugeContainer = () => {
     // Handle incoming WebSocket messages
     newWebSocket.addEventListener('message', (event) => {
       const receivedSensorData = JSON.parse(event.data.toString());
-      setRealTimeSensorData(receivedSensorData);
+      const { temperature, humidity, lux } = receivedSensorData;
+      setRealTimeSensorData({ temperature, humidity, lux });
     });
     setWs(newWebSocket);
     // Clean up the WebSocket connection when the component unmounts
