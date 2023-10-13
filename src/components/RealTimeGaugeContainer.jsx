@@ -5,9 +5,9 @@ import RealTimeGauge from './RealTimeGauge.jsx';
 
 const RealTimeGaugeContainer = () => {
   const [realTimeSensorData, setRealTimeSensorData] = useState({
-    temperature: null,
-    humidity: null,
-    lux: null
+    temperature: 0,
+    humidity: 0,
+    lux: 0
   });
 
 console.log(realTimeSensorData);
