@@ -47,12 +47,17 @@ useEffect(() => {
   newWebSocket.addEventListener('message', (event) => {
     try {
       const { temperature, humidity, lux } = JSON.parse(event.data);
-      setRealTimeSensorData({ temperature, humidity, lux });
+
+      const numericTemperature = parseFloat(temperature);
+      const numericHumidity = parseFloat(humidity);
+      const numericLux = parseFloat(lux);
+
+      setRealTimeSensorData({ temperature: numericTemperature, humidity: numericHumidity, lux: numericLux });
     } catch (error) {
       console.log('Error parsing WebSocket message:', error);
-      // Handle the error or provide a fallback behavior
     }
   });
+
 
   setWs(newWebSocket);
 
