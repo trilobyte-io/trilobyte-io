@@ -11,7 +11,6 @@ import postSensorData from "./controllers/postSensorData.js";
 
 const port = 3000;
 
-
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
@@ -29,33 +28,25 @@ const myMiddleware = (req, res, next) => {
   wss.clients.forEach((client) => {
       client.send(JSON.stringify(message));
   });
-  res.status(200).json("POST request handled successfully").end();
+  res.status(200).json("POST request handled successfully");
   next(); // Call next to proceed to the next function
 };
-
-
-
 
 // WebSocket connection handling
 wss.on('connection', () => {
   console.log('WebSocket connection established');
 });
 
-
-
-
 app.get("/allData", getAllData);
 
 app.post("/postSensorData", myMiddleware, postSensorData);
-
-
 
 app.post("/postRealTimeData",  (req, res) => {
   const message = req.body
   wss.clients.forEach((client) => {
       client.send(JSON.stringify(message));
   });
-  res.status(200).json("POST request handled successfully").end();
+  res.status(200).json("POST request handled successfully");
 })
 
 // app.post("/postRealTimeData", postRealTimeData);
