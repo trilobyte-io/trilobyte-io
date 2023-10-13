@@ -2,6 +2,7 @@ import pool from "../../db/connect.js"
 
 const postSensorData = (request, response) => {
   const data = request.body;
+  console.log(data)
   const currentDate = new Date();
   const mysqlDateTime = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
