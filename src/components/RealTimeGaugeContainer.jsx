@@ -4,12 +4,13 @@ import RealTimeGauge from './RealTimeGauge.jsx';
 
 
 const RealTimeGaugeContainer = () => {
-  const [realTimeSensorData, setRealTimeSensorData] = useState({});
+  const [realTimeSensorData, setRealTimeSensorData] = useState({temperature: 26.42328644, humidity: 59.95712280, lux: 21.40137482});
 // eslint-disable-next-line no-unused-vars
   const [ws, setWs] = useState(null);
 
   useEffect(() => {
     const newWebSocket = new WebSocket('ws://localhost:3001');
+    // setRealTimeSensorData({temperature: 26.42328644, humidity: 59.95712280, lux: 21.40137482})
 
     // Handle WebSocket open event
     newWebSocket.addEventListener('open', () => {
@@ -37,18 +38,13 @@ const RealTimeGaugeContainer = () => {
       }
     };
   }, []);
-
   return (
     <div className="max-w-screen-xl mx-auto lg:h-80 h-1/4 flex justify-between">
-      <div className="w-1/3 p-4">
-        <RealTimeGauge />
-      </div>
-      <div className="w-1/3 p-4">
-        <RealTimeGauge />
-      </div>
-      <div className="w-1/3 p-4">
-        <RealTimeGauge />
-      </div>
+    {Object.keys(realTimeSensorData).map((data, i) =>
+        <div className="w-1/3 p-4" key={i}>
+          <RealTimeGauge realTimeSensorData={realTimeSensorData[data]} />
+        </div>
+    )}
     </div>
   );
 };

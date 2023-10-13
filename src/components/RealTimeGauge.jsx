@@ -1,9 +1,8 @@
 import React from 'react';
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Doughnut } from 'react-chartjs-2';
 
-const RealTimeGauge = () => {
-
+const RealTimeGauge = ({realTimeSensorData}) => {
+  console.log(realTimeSensorData);
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -16,7 +15,7 @@ const RealTimeGauge = () => {
     datasets: [
       {
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: [realTimeSensorData],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
           'rgba(54, 162, 235, 0.2)',
