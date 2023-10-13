@@ -18,7 +18,7 @@ const postSensorData = (request, response) => {
       console.log("ERROR IN POST CONTROLLER: ", error);
       response.status(500).json({ error: 'An error occurred while posting data.' });
     } else {
-      response.status(200).end.json("success");
+      response.status(200).json("success");
     }
   });
 }
