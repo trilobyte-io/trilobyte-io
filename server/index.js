@@ -39,10 +39,12 @@ wss.on('connection', () => {
 
 app.get("/allData", getAllData);
 
-app.post("/postSensorData", postSensorData);
+app.post("/postSensorData", myMiddleware, postSensorData);
 
 app.post("/postRealTimeData",  (req, res) => {
   const message = req.body
+  console.log(message)
+
   wss.clients.forEach((client) => {
       client.send(JSON.stringify(message));
   });
