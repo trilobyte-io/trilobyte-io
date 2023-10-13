@@ -1,25 +1,21 @@
 import pool from "../../db/connect.js"
 
 const postSensorData = (request, response) => {
-  let data = request.body;
+  const data = request.body;
   const currentDate = new Date();
-  console.log( request.body)
-
   const mysqlDateTime = currentDate.toISOString().slice(0, 19).replace('T', ' ');
 
-  let query = `INSERT INTO tempHum (time, temperature, humidity, lux)
+  const query = `INSERT INTO tempHum (time, temperature, humidity, lux)
                VALUES ('${mysqlDateTime}', ${data.SHT_T}, ${data.SHT_RH}, ${data.TSL_lux});`;
-  console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION");
-
+  // eslint-disable-next-line no-unused-vars
   pool.query(query, (error, results) => {
     if (error) {
-      console.log(results)
-      console.log("ERROR IN POST CONTROLLER: ", error);
-      response.status(500).json({ error: 'An error occurred while posting data.' });
-    } else {
-      // End the response here after successful database insertion
-      response.status(200).json("success").end();
+      console.error("ERROR IN POST CONTROLLER: ", error);
+      return response.status(500).json({ error: 'An error occurred while posting data.' });
     }
+
+    // Respond with success when the query is successful
+    return response.status(200).json({ message: 'success' });
   });
 }
 
