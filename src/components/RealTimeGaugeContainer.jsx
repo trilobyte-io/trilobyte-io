@@ -45,8 +45,7 @@ const RealTimeGaugeContainer = () => {
 
     // Handle incoming WebSocket messages
     newWebSocket.addEventListener('message', (event) => {
-      const receivedSensorData = JSON.parse(event.data.toString());
-      const { temperature, humidity, lux } = receivedSensorData;
+      const { temperature, humidity, lux } = JSON.parse(event.data)
       setRealTimeSensorData({ temperature, humidity, lux });
     });
     setWs(newWebSocket);
