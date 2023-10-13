@@ -3,8 +3,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 const RealTimeGauge = ({ realTimeSensorData, config }) => {
 
-  console.log(config)
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,

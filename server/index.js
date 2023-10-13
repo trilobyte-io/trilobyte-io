@@ -22,16 +22,6 @@ app.use(express.json());
 app.use("/", express.static("src/dist"));
 app.use(cors());
 
-const myMiddleware = (req, res, next) => {
-  // First function
-  const message = req.body
-  wss.clients.forEach((client) => {
-      client.send(JSON.stringify(message));
-  });
-  res.status(200).json("POST request handled successfully");
-  next(); // Call next to proceed to the next function
-};
-
 // WebSocket connection handling
 wss.on('connection', () => {
   console.log('WebSocket connection established');
@@ -43,7 +33,7 @@ app.post("/postSensorData", postSensorData);
 
 app.post("/postRealTimeData",  (req, res) => {
   const message = req.body
-  console.log(message)
+  console.log("IN REALTIME DATA ROUTE HANDLER: ", message)
 
   wss.clients.forEach((client) => {
       client.send(JSON.stringify(message));
