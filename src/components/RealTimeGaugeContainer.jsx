@@ -27,35 +27,41 @@ const RealTimeGaugeContainer = () => {
     }
   }
 
-  useEffect(() => {
-    const newWebSocket = new WebSocket('ws://localhost:3001');
+useEffect(() => {
+  const newWebSocket = new WebSocket('ws://localhost:3001');
 
-    // Handle WebSocket open event
-    newWebSocket.addEventListener('open', () => {
-      if (newWebSocket.readyState === WebSocket.OPEN) {
-        console.log('WebSocket Connection is OPEN');
-      } else {
-        console.log('WebSocket Connection is not OPEN');
-      }
-    });
+  // Handle WebSocket open event
+  newWebSocket.addEventListener('open', () => {
+    if (newWebSocket.readyState === WebSocket.OPEN) {
+      console.log('WebSocket Connection is OPEN');
+    } else {
+      console.log('WebSocket Connection is not OPEN');
+    }
+  });
 
-    newWebSocket.addEventListener('error', (event) => {
-      console.error('WebSocket Error:', event);
-    });
+  newWebSocket.addEventListener('error', (event) => {
+    console.error('WebSocket Error:', event);
+  });
 
-    // Handle incoming WebSocket messages
-    newWebSocket.addEventListener('message', (event) => {
-      const { temperature, humidity, lux } = JSON.parse(event.data)
+  // Handle incoming WebSocket messages
+  newWebSocket.addEventListener('message', (event) => {
+    try {
+      const { temperature, humidity, lux } = JSON.parse(event.data);
       setRealTimeSensorData({ temperature, humidity, lux });
-    });
-    setWs(newWebSocket);
-    // Clean up the WebSocket connection when the component unmounts
-    return () => {
-      if (newWebSocket) {
-        newWebSocket.close();
-      }
-    };
-  }, []);
+    } catch (error) {
+      console.log('Error parsing WebSocket message:', error);
+      // Handle the error or provide a fallback behavior
+    }
+  });
+
+  setWs(newWebSocket);
+
+  // Clean up the WebSocket connection when the component unmounts
+  return () => {
+    newWebSocket.close();
+  };
+}, []);
+
 
   return (
     <div className="max-w-screen-xl mx-auto lg:h-80 h-1/4 flex justify-between">
