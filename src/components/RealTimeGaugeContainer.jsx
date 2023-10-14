@@ -7,7 +7,7 @@ const RealTimeGaugeContainer = () => {
   const [realTimeSensorData, setRealTimeSensorData] = useState({
     temperature: 0,
     humidity: 0,
-    lux: 0
+    lux: 0,
   });
 
 console.log(realTimeSensorData);
@@ -51,9 +51,9 @@ useEffect(() => {
     try {
       const { temperature, humidity, lux } = JSON.parse(event.data);
 
-      const numericTemperature = parseFloat(temperature);
-      const numericHumidity = parseFloat(humidity);
-      const numericLux = parseFloat(lux);
+      const numericTemperature = Number(temperature);
+      const numericHumidity = Number(humidity);
+      const numericLux = Number(lux);
 
       setRealTimeSensorData({ temperature: numericTemperature, humidity: numericHumidity, lux: numericLux });
     } catch (error) {

@@ -3,14 +3,18 @@ import { Doughnut } from 'react-chartjs-2';
 
 const RealTimeGauge = ({ realTimeSensorData, config }) => {
 
+  console.log(realTimeSensorData)
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     circumference: 270,
     rotation: -135
   };
-
+  console.log(typeof(realTimeSensorData))
   const remainingSpace = realTimeSensorData - config.maxValue
+  console.log(typeof(config.maxValue))
+
 
   const data = {
     labels: ['Red', 'Blue'],
