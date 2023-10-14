@@ -49,11 +49,13 @@ useEffect(() => {
   // Handle incoming WebSocket messages
   newWebSocket.addEventListener('message', (event) => {
     try {
-      const { temperature, humidity, lux } = JSON.parse(event.data);
+      const { SHT_T, SHT_RH, TSL_lux } = JSON.parse(event.data);
 
-      const numericTemperature = Number(temperature);
-      const numericHumidity = Number(humidity);
-      const numericLux = Number(lux);
+      const numericTemperature = Number(SHT_T);
+      const numericHumidity = Number(SHT_RH);
+      const numericLux = Number(TSL_lux);
+
+      console.log(SHT_T)
 
       setRealTimeSensorData({ temperature: numericTemperature, humidity: numericHumidity, lux: numericLux });
     } catch (error) {
