@@ -36,8 +36,8 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
         var textX = Math.round((width - ctx.measureText(dynamicData).width) / 2);
         var textY = height / 1.65;
         ctx.fillText(dynamicData, textX, textY);
-        ctx.save();
         chart.update();
+        ctx.save();
       }
     }
   ];
