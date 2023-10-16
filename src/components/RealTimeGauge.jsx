@@ -17,22 +17,29 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
     },
   };
 
-  const plugins = [{
-    beforeDraw: function(chart) {
-     var width = chart.width,
-         height = chart.height,
-         ctx = chart.ctx;
-         ctx.restore();
-         var fontSize = (height / 160).toFixed(2);
-         ctx.font = fontSize + "em sans-serif";
-         ctx.textBaseline = "top";
-         var text = realTimeSensorData,
-         textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 1.75;
-         ctx.fillText(text, textX, textY);
-         ctx.save();
+  const plugins = [
+    {
+      beforeDraw: function(chart) {
+        var width = chart.width,
+          height = chart.height,
+          ctx = chart.ctx;
+
+        // Retrieve and format your dynamic data
+        var rawDynamicData= realTimeSensorData
+        var dynamicData = rawDynamicData.toFixed(2); // Replace with your dynamic data source
+
+        ctx.restore();
+        var fontSize = (height / 160).toFixed(2);
+        ctx.font = fontSize + "em sans-serif";
+        ctx.textBaseline = "middle"; // Adjust text vertical alignment
+        ctx.fillStyle = "white";
+        var textX = Math.round((width - ctx.measureText(dynamicData).width) / 2);
+        var textY = height / 2;
+        ctx.fillText(dynamicData, textX, textY);
+        ctx.save();
+      }
     }
-  }]
+  ];
 
   const remainingSpace = realTimeSensorData - config.maxValue
 
