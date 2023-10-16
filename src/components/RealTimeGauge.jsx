@@ -8,23 +8,29 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
     maintainAspectRatio: false,
     circumference: 270,
     rotation: -135,
+    plugins: {
+      legend: {
+        labels: {
+          color: 'rgb(192, 192, 192)'
+        }
+      }
+    }
   };
 
   const remainingSpace = realTimeSensorData - config.maxValue
 
   const data = {
-    labels: ['Red', 'Blue'],
+    labels: [config.name],
     datasets: [
       {
-        label: '# of Votes',
         data: [realTimeSensorData, remainingSpace],
         backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
+          config.color,
+          'transparent',
         ],
         borderColor: [
-          'rgba(255, 99, 132, 1)',
-          'rgba(54, 162, 235, 1)',
+          config.borderColor,
+          config.borderColor,
         ],
         borderWidth: 1,
       },
@@ -37,13 +43,13 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
       const { ctx, data } = chart;
       const xCenter = chart.getDatasetMeta(0).data[0].x
       const yCenter = chart.getDatasetMeta(0).data[0].y
-      const fontSize = Math.min(chart.width, chart.height) * 0.12;
+      const fontSize = Math.min(chart.width, chart.height) * 0.095;
       ctx.save();
       ctx.fillStyle = 'white';
       ctx.font = `${fontSize}px sans-serif`;
       ctx.textAlign = 'center';
       ctx. textBaseline = 'middle';
-      ctx.fillText(data.datasets[0].data[0].toFixed(2), xCenter, yCenter);
+      ctx.fillText(`${data.datasets[0].data[0].toFixed(2)}${config.symbol}`, xCenter, yCenter);
     }
   }
 

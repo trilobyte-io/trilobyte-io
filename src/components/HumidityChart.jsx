@@ -39,30 +39,38 @@ const HumidityChart = ({ data, timeRange }) => {
     labels: data.map(entry => {
       return formatDate(entry.time, timeRange)
     }),
-    datasets: [{
-        label: 'Humidity',
-        data: filterDataPoints(data, 'humidity', timeRange),
-        borderColor: 'green',
-        spanGaps: true,
-        yAxisID: 'humidity'
-      },
+    datasets: [
       {
         label: 'Temperature',
         data: filterDataPoints(data, 'temperature', timeRange),
-        borderColor: 'blue',
+        borderColor: 'rgb(251,79,79)',
         spanGaps: true,
         yAxisID: 'temperature'
       },
       {
+        label: 'Humidity',
+        data: filterDataPoints(data, 'humidity', timeRange),
+        borderColor: 'rgb(108,192,229)',
+        spanGaps: true,
+        yAxisID: 'humidity'
+      },
+      {
         label: 'Lux',
         data: filterDataPoints(data, 'lux', timeRange),
-        borderColor: 'red',
+        borderColor: 'rgb(251,201,61)',
         spanGaps: true,
         yAxisID: 'lux'
       }],
   };
 
   const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: 'rgb(192, 192, 192)'
+        }
+      }
+    },
     grid: {
       display: false,
     },

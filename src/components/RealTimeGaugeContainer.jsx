@@ -15,16 +15,25 @@ const RealTimeGaugeContainer = () => {
 
   const configProp = {
     temperature: {
+      name: 'Temperature',
       maxValue: 100,
-      color: 'blue'
+      color: 'rgb(251,79,79, 0.8)',
+      borderColor: 'rgb(192, 192, 192)',
+      symbol: '°F'
     },
     humidity: {
+      name: 'Humidity',
       maxValue: 100,
-      color: 'green'
+      color: 'rgb(108,192,229, 0.8)',
+      borderColor: 'rgb(192, 192, 192)',
+      symbol: '%'
     },
     lux: {
-      maxValue: 3500,
-      color: 'red'
+      name: 'Lux',
+      maxValue: 50000,
+      color: 'rgb(251,201,61, 0.8)',
+      borderColor: 'rgb(192, 192, 192)',
+      symbol: 'lx'
     }
   }
 
