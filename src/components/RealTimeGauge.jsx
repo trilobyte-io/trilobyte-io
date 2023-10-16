@@ -3,44 +3,12 @@ import { Doughnut } from 'react-chartjs-2';
 
 const RealTimeGauge = ({ realTimeSensorData, config }) => {
 
-
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     circumference: 270,
     rotation: -135,
-    centerText: {
-      display: true,
-      text: '42%', // Your desired text
-      color: 'black', // Text color
-      fontSize: 16, // Text font size
-    },
   };
-
-  const plugins = [
-    {
-      beforeDraw: function(chart) {
-        var width = chart.width,
-          height = chart.height,
-          ctx = chart.ctx;
-
-        // Retrieve and format your dynamic data
-        var rawDynamicData= realTimeSensorData
-        var dynamicData = rawDynamicData.toFixed(2); // Replace with your dynamic data source
-
-        ctx.restore();
-        var fontSize = (height / 160).toFixed(2);
-        ctx.font = fontSize + "em sans-serif";
-        ctx.textBaseline = "middle"; // Adjust text vertical alignment
-        ctx.fillStyle = "white";
-        var textX = Math.round((width - ctx.measureText(dynamicData).width) / 2);
-        var textY = height / 1.65;
-        ctx.fillText(dynamicData, textX, textY);
-        chart.update();
-        ctx.save();
-      }
-    }
-  ];
 
   const remainingSpace = realTimeSensorData - config.maxValue
 
@@ -63,8 +31,25 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
     ],
   };
 
+  const gaugeText = {
+    id: 'gaugeText',
+    beforeDatasetsDraw(chart) {
+      const { ctx, data } = chart;
+      const xCenter = chart.getDatasetMeta(0).data[0].x
+      const yCenter = chart.getDatasetMeta(0).data[0].y
+      const fontSize = Math.min(chart.width, chart.height) * 0.12;
+      ctx.save();
+      ctx.fillStyle = 'white';
+      ctx.font = `${fontSize}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx. textBaseline = 'middle';
+      ctx.fillText(data.datasets[0].data[0].toFixed(2), xCenter, yCenter);
+    }
+  }
+
+
   return (
-     <Doughnut data={data} options={options} plugins={plugins} reDraw={true}/>
+  <Doughnut data={data} options={options} plugins={ [gaugeText] }/>
   );
 };
 

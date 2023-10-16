@@ -73,9 +73,9 @@ useEffect(() => {
   return (
     <div className="max-w-screen-xl mx-auto lg:h-80 h-1/4 flex justify-between">
     {Object.keys(realTimeSensorData).map((data, i) =>
-        <div className="w-1/3 p-4" key={i}>
-          <RealTimeGauge config={configProp[data]} realTimeSensorData={realTimeSensorData[data]} />
-        </div>
+      <div className="w-1/3 p-4" key={i}>
+        <RealTimeGauge config={configProp[data]} realTimeSensorData={realTimeSensorData[data]} />
+      </div>
     )}
     </div>
   );
