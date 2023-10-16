@@ -8,8 +8,31 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
     responsive: true,
     maintainAspectRatio: false,
     circumference: 270,
-    rotation: -135
+    rotation: -135,
+    centerText: {
+      display: true,
+      text: '42%', // Your desired text
+      color: 'black', // Text color
+      fontSize: 16, // Text font size
+    },
   };
+
+  const plugins = [{
+    beforeDraw: function(chart) {
+     var width = chart.width,
+         height = chart.height,
+         ctx = chart.ctx;
+         ctx.restore();
+         var fontSize = (height / 160).toFixed(2);
+         ctx.font = fontSize + "em sans-serif";
+         ctx.textBaseline = "top";
+         var text = realTimeSensorData,
+         textX = Math.round((width - ctx.measureText(text).width) / 2),
+         textY = height / 1.75;
+         ctx.fillText(text, textX, textY);
+         ctx.save();
+    }
+  }]
 
   const remainingSpace = realTimeSensorData - config.maxValue
 
@@ -33,7 +56,7 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
   };
 
   return (
-     <Doughnut data={data} options={options}/>
+     <Doughnut data={data} options={options} plugins={plugins}/>
   );
 };
 
