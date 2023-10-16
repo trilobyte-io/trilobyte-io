@@ -34,9 +34,10 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
         ctx.textBaseline = "middle"; // Adjust text vertical alignment
         ctx.fillStyle = "white";
         var textX = Math.round((width - ctx.measureText(dynamicData).width) / 2);
-        var textY = height / 2;
+        var textY = height / 1.65;
         ctx.fillText(dynamicData, textX, textY);
         ctx.save();
+        chart.update();
       }
     }
   ];
