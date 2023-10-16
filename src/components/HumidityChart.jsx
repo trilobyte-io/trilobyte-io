@@ -116,7 +116,7 @@ const HumidityChart = ({ data, timeRange }) => {
           text: 'Lux',
         },
         min: 0,
-        max: 3000,
+        max: 50000,
       },
       x: {
         grid: {
