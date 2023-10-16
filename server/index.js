@@ -33,7 +33,6 @@ app.post("/postSensorData", postSensorData);
 
 app.post("/postRealTimeData",  (req, res) => {
   const message = req.body
-  console.log("IN REALTIME DATA ROUTE HANDLER: ", message)
 
   wss.clients.forEach((client) => {
       client.send(JSON.stringify(message));

@@ -2,7 +2,6 @@ import pool from "../../db/connect.js"
 
 const getAllData = (request, response) => {
   let query = `SELECT * FROM tempHum;`;
-  console.log("REQUEST IS MAKING IT TO TEMPHUM CONTROLLER FUNCTION")
 
   pool.query(query, (error, results) => {
     if (error) {

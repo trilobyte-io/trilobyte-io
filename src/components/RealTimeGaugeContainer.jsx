@@ -10,8 +10,6 @@ const RealTimeGaugeContainer = () => {
     lux: 0,
   });
 
-console.log(realTimeSensorData);
-
 // eslint-disable-next-line no-unused-vars
   const [ws, setWs] = useState(null);
 
@@ -55,7 +53,6 @@ useEffect(() => {
       const numericHumidity = Number(SHT_RH);
       const numericLux = Number(TSL_lux);
 
-      console.log(SHT_T)
 
       setRealTimeSensorData({ temperature: numericTemperature, humidity: numericHumidity, lux: numericLux });
     } catch (error) {
