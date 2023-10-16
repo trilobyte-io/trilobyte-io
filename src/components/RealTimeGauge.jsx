@@ -56,7 +56,7 @@ const RealTimeGauge = ({ realTimeSensorData, config }) => {
   };
 
   return (
-     <Doughnut data={data} options={options} plugins={plugins}/>
+     <Doughnut data={data} options={options} plugins={plugins} reDraw={true}/>
   );
 };
 
